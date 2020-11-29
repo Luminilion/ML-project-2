@@ -1,2 +1,5 @@
 # ignore ipynb checkpoint
 .ipynb_checkpoints
+
+# data folder
+data/
