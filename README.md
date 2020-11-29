@@ -36,7 +36,7 @@ python3 cooc.py
 ```
 
 
-Now given the co-occurrence matrix and the vocabulary, it is not hard to train GloVe word embeddings, that is to compute an embedding vector for wach word in the vocabulary. We suggest to implement SGD updates to train the matrix factorization, as in
+Now given the co-occurrence matrix and the vocabulary, it is not hard to train GloVe word embeddings, that is to compute an embedding vector for each word in the vocabulary. We suggest to implement SGD updates to train the matrix factorization, as in
 
 ```glove_solution.py```
 
