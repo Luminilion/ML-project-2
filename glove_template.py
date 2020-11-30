@@ -16,7 +16,31 @@ In other words, we are looking for a decomposition of the co-occurance matrix of
 two matrices xs and ys of shape (n,embedding_dim) such that:
 cooc = xs @ ys.T
 
+To start with, we will take L = sum((Cij - xs@ys.T)**2) + regularization term as a loss function
 """
+
+def sgd_grad(cooc_data, xs, ys, ix, jy, lambda_x, lambda_y):
+    """
+    Computes the gradient of the loss function respective to xs and to ys
+
+    Parameters
+    ----------
+    cooc: ndarray (n,n) 
+    xs: ndarray (n,d)
+    ys: ndarray (n,d)
+    ix: int
+    jy: int
+
+    Returns
+    -------
+    grad_xs, grad_ys: ndarray (d,)
+    """
+
+    e = xs[ix] @ (ys[jy].T) - cooc_data
+    grad_xsi = 2*e*ys[jy] + 2*lambda_x*xs[ix]
+    grad_ysj = 2*e*xs[ix] + 2*lambda_y*ys[jy]
+
+    return grad_xsi, grad_ysj
 
 def main():
     print("\nloading cooccurrence matrix")
@@ -32,8 +56,8 @@ def main():
     xs = np.random.normal(size=(cooc.shape[0], embedding_dim))
     ys = np.random.normal(size=(cooc.shape[1], embedding_dim))
 
-    eta = 0.001
-    alpha = 3 / 4
+    eta = 0.01
+    alpha = 10
 
     epochs = 10
 
@@ -43,17 +67,22 @@ def main():
     print(cooc.data)
     print(f"Meaning that {cooc.row[1]} and {cooc.col[1]} co-occurs {cooc.data[1]} times\n")
 
-    """
+
     for epoch in range(epochs):
         print("epoch {}".format(epoch))
-        for ix, jy, n in zip(cooc.row, cooc.col, cooc.data):"""
+        for ix, jy, n in zip(cooc.row, cooc.col, cooc.data):
+
+            grad_xsi, grad_ysj = sgd_grad(n, xs, ys, ix, jy, alpha, alpha)
+            
+            xs[ix] = xs[ix] - eta * grad_xsi
+            ys[jy] = ys[jy] - eta * grad_ysj
 
 			# fill in your SGD code here, 
 			# for the update resulting from co-occurence (i,j)
 		
 
     #np.save('embeddings', xs)
-
+    print(xs[1]@(ys[1].T))
 
 if __name__ == '__main__':
     main()
