@@ -9,10 +9,9 @@ glove_template.py is a python file that takes a previously computed co-occurence
 and returns the matrix xs containing the word vectors computed with GloVe. 
 
 GloVe uses the following loss function: J = \sum_{i,j}^{V} f(M_{ij})(w_i^Tw_j + b_i + c_j - log(M_{ij}))^2
-For now, we took b_i = c_j = 0 --> room to improvement
+For now, we took the biais terms b_i = c_j = 0 --> room to improvement
 
-After considering the gradient respecting...
-to continue after the computations
+Details on the computation of the gradient can be found in the report.
 '''
 
 #!/usr/bin/env python3
@@ -26,16 +25,16 @@ DATA_PATH = "../data/"
 def main():
     print("loading cooccurrence matrix")
     with open(DATA_PATH + 'cooc.pkl', 'rb') as f:
-        cooc = pickle.load(f)
-    print("{} nonzero entries".format(cooc.nnz))
+        M = pickle.load(f)
+    print("{} nonzero entries".format(M.nnz))
 
     nmax = 100
-    print("using nmax =", nmax, ", cooc.max() =", cooc.max())
+    print("using nmax =", nmax, ", cooc.max() =", M.max())
 
     print("initializing embeddings")
     embedding_dim = 20
-    xs = np.random.normal(size=(cooc.shape[0], embedding_dim))
-    ys = np.random.normal(size=(cooc.shape[1], embedding_dim))
+    xs = np.random.normal(size=(M.shape[0], embedding_dim))
+    ys = np.random.normal(size=(M.shape[1], embedding_dim))
 
     eta = 0.001
     alpha = 3 / 4
@@ -44,13 +43,17 @@ def main():
 
     for epoch in range(epochs):
         print("epoch {}".format(epoch))
-        for ix, jy, n in zip(cooc.row, cooc.col, cooc.data):
-			logn = np.log(n)
-            fn = min(1.0, (n / nmax) ** alpha)
-            x, y = xs[ix, :], ys[jy, :]
-            scale = 2 * eta * fn * (logn - np.dot(x, y))
-            xs[ix, :] += scale * y
-            ys[jy, :] += scale * x
+        for ix, jy, M_ij in zip(M.row, M.col, M.data):
+
+            #Computing grad_xi and grad_yj
+			e_ij = np.dot(x[ix, :], y[jy, :]) - np.log(n)
+            fM_ij = min(1.0, (M_ij / nmax) ** alpha)
+            grad_xi = 2 * fM_ij * e_ij * y[jy, :]
+            grad_yj = 2 * fM_ij * e_ij * x[ix, :]
+
+            #Updating the weights
+            xs[ix, :] -= eta * grad_xi
+            ys[jy, :] -= eta * grad_yj
 
     np.save(DATA_PATH + 'embeddings', xs)
 
