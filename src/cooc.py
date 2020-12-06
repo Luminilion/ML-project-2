@@ -14,7 +14,7 @@ Same for train_neg.txt.
 Open the previously constructed vocab.pkl and retrieve the dictionary as vocab.
 
 ###Second Part: 
-Will do the following for both train_pos.txt and train_neg.txt:
+Will do the following for both train_pos_full.txt and train_neg_full.txt:
 
 - Open the file
 
@@ -87,7 +87,7 @@ def main():
 
     data, row, col = [], [], []
     counter = 1
-    for fn in [DATA_PATH + 'pos_train.txt', DATA_PATH + 'neg_train.txt']:
+    for fn in [DATA_PATH + 'train_pos_full.txt', DATA_PATH + 'train_neg_full.txt']:
         with open(fn) as f:
             for line in f:
                 tokens = [vocab.get(t, -1) for t in line.strip().split()]
