@@ -14,7 +14,49 @@ Here is our report in pdf format: [TBD]()
 
 ## Organisation
 
-There are three folders : `data`, `plot`, `project_description`, `src` and `submission`.
+There are five folders : `data`, `plot`, `project_description`, `src` and `submission`.
+
+### Data
+
+In the `data` folder, you will find the `twitter-datasets.zip`. You should unzip it locally and pour its content directly in the `data` folder. This being done the `data` folder should contain:
+
+- `sample_submission.csv` : an example of submission given by AIcrowd
+- `test_data.txt` : the tweets to classify
+- `train_neg_full.txt` : negative tweets to train on
+- `train_neg.txt` : small portion of `train_neg_full.txt` (for testing purposes)
+- `train_pos_full.txt` : positive tweets to train on
+- `train_pos.txt` : small portion of `train_pos_full.txt` (for testing purposes)
+
+We have also put `embeddings.npy` so that one can skip the **Computing the co-occurrence matrix** and **Computing the Word Embeddings** described before.
+
+### Project_description
+
+In the `project_description` folder, you will find the documents related to the assignment such:
+
+- `Assignment.md` : Project Text Sentiment Classification Assignment
+- `project2_description.pdf` : Overall Project 2 description pdf
+
+
+### Plots
+
+In the `plots` folder, you will find graphs plotted for:
+
+- optimization of hyperparameters
+- evaluating predictive accuracy and comparing to BERT's
+- ...
+
+### Src
+
+In the `src` folder, you will find our code:
+
+- ... *To do, i'll do it later because it's gonna take a while to describe all files...*
+
+### Submission
+
+In the `submission` folder, you will find our latest submission:
+
+- `submission.csv` : latest submission (classification prediction of `test_data.txt`)
+
 
 ## Recreate final solution
 
@@ -60,53 +102,5 @@ You are now ready to train the model. To do this, open the `Project2.ipynb` note
 The model now trained, it is possible to make predictions by following the steps describe in `Project2.ipynb`.
 
 The predictions should be in the `submission` folder saved as `submission.csv`.
-
-
-### Data
-
-In the `data` folder, you will find the `twitter-datasets.zip`. You should unzip it locally and pour its content directly in the `data` folder. This being done the `data` folder should contain:
-
-- `sample_submission.csv` : an example of submission given by AIcrowd
-- `test_data.txt` : the tweets to classify
-- `train_neg_full.txt` : negative tweets to train on
-- `train_neg.txt` : small portion of `train_neg_full.txt` (for testing purposes)
-- `train_pos_full.txt` : positive tweets to train on
-- `train_pos.txt` : small portion of `train_pos_full.txt` (for testing purposes)
-
-We have also put `embeddings.npy` so that one can skip the **Computing the co-occurrence matrix** and **Computing the Word Embeddings** described before.
-
-### Project_description
-
-In the `project_description` folder, you will find the documents related to the assignment such:
-
-- `Assignment.md` : Project Text Sentiment Classification Assignment
-- `project2_description.pdf` : Overall Project 2 description pdf
-
-
-### Plots
-
-In the `plots` folder, you will find graphs plotted for:
-
-- optimization of hyperparameters
-- evaluating predictive accuracy and comparing to BERT's
-- ...
-
-### Src
-
-In the `src` folder, you will find our code:
-
-- ... *To do, i'll do it later because it's gonna take a while to describe all files...*
-
-### Submission
-
-In the `submission` folder, you will find our latest submission:
-
-- `submission.csv` : latest submission (classification prediction of `test_data.txt`)
-
-
-## Data preparation
-
-*Insert the description of your part guys*
-...
 
 
