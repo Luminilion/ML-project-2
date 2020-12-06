@@ -53,7 +53,7 @@ After completion, you should find in the `data` folder `embeddings.npy` encoding
 
 **Training the model**
 
-We are now ready to train the model. To do this, open the `Project2.ipynb` notebook and follow the instructions in Markdown. 
+You are now ready to train the model. To do this, open the `Project2.ipynb` notebook and follow the instructions in Markdown. 
 
 **Submission**
 
