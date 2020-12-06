@@ -29,14 +29,6 @@ In the `data` folder, you will find the `twitter-datasets.zip`. You should unzip
 
 We have also put `embeddings.npy` so that one can skip the **Computing the co-occurrence matrix** and **Computing the Word Embeddings** described before.
 
-### Project_description
-
-In the `project_description` folder, you will find the documents related to the assignment such:
-
-- `Assignment.md` : Project Text Sentiment Classification Assignment
-- `project2_description.pdf` : Overall Project 2 description pdf
-
-
 ### Plots
 
 In the `plots` folder, you will find graphs plotted for:
@@ -44,6 +36,13 @@ In the `plots` folder, you will find graphs plotted for:
 - optimization of hyperparameters
 - evaluating predictive accuracy and comparing to BERT's
 - ...
+
+### Project_description
+
+In the `project_description` folder, you will find the documents related to the assignment such:
+
+- `Assignment.md` : Project Text Sentiment Classification Assignment
+- `project2_description.pdf` : Overall Project 2 description pdf
 
 ### Src
 
