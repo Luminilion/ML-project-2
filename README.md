@@ -31,7 +31,7 @@ In the `data` folder, you will find the `twitter-datasets.zip`. You should unzip
 - `train_pos_full.txt`: positive tweets to train on
 - `train_pos.txt`: small portion of `train_pos_full.txt` (for testing purposes)
 
-We have also put `embeddings.npy` so that one can skip the **Computing the co-occurrence matrix** and **Computing the Word Embeddings** described before.
+We have also put `embeddings.npy` so that one can skip the **Computing the co-occurrence matrix** and **Computing the Word Embeddings** described below.
 
 ### 2) Plots
 
@@ -50,7 +50,7 @@ In the `project_description` folder, you will find the documents related to the 
 
 ### 4) Src
 
-In the `src` folder, you will find our code: *more precise description can be found directly in the respected files in Docstring*
+In the `src` folder, you will find our code: *more precise description can be found directly in the files Docstring*
 
 - `build_vocab.sh`: creates `vocab_full.txt` in the `data` folder containing all the (unique) words sorted along with their number of occurrences appearing in `train_pos_full.txt` and `train_neg_full.txt`.
 
