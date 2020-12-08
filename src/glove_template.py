@@ -46,16 +46,16 @@ def main():
         for ix, jy, M_ij in zip(M.row, M.col, M.data):
 
             #Computing grad_xi and grad_yj
-			e_ij = np.dot(x[ix, :], y[jy, :]) - np.log(n)
+            e_ij = np.dot(xs[ix, :], ys[jy, :]) - np.log(M_ij)
             fM_ij = min(1.0, (M_ij / nmax) ** alpha)
-            grad_xi = 2 * fM_ij * e_ij * y[jy, :]
-            grad_yj = 2 * fM_ij * e_ij * x[ix, :]
+            grad_xi = 2 * fM_ij * e_ij * ys[jy, :]
+            grad_yj = 2 * fM_ij * e_ij * xs[ix, :]
 
             #Updating the weights
             xs[ix, :] -= eta * grad_xi
             ys[jy, :] -= eta * grad_yj
 
-    np.save(DATA_PATH + 'embeddings', xs)
+    np.save(DATA_PATH + 'embeddings_full', xs)
 
 
 if __name__ == '__main__':
