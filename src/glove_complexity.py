@@ -85,5 +85,5 @@ plt.ylabel('Frequency')
 plt.text(10**3,10**4,"Slope: {:.2f}".format(w[1]))
 plt.xscale('log')
 plt.yscale('log')
-plt.savefig(DATA_PATH + 'hist_glove_complexity.png')
+plt.savefig('../plots/' + 'hist_glove_complexity.png')
 
