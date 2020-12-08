@@ -40,8 +40,10 @@ def main():
     alpha = 3 / 4
 
     epochs = 10
+    loss_per_epoch = []
 
     for epoch in range(epochs):
+        L = 0
         print("epoch {}".format(epoch))
         for ix, jy, M_ij in zip(M.row, M.col, M.data):
 
@@ -51,11 +53,19 @@ def main():
             grad_xi = 2 * fM_ij * e_ij * ys[jy, :]
             grad_yj = 2 * fM_ij * e_ij * xs[ix, :]
 
+            #Computing intermediate loss for ix and jy:
+            L += fM_ij * e_ij**2
+
             #Updating the weights
             xs[ix, :] -= eta * grad_xi
             ys[jy, :] -= eta * grad_yj
+        
+        loss_per_epoch.append(L)
 
-    np.save(DATA_PATH + 'embeddings_full', xs)
+    np.save(DATA_PATH + 'xs', xs)
+    np.save(DATA_PATH + 'ys', ys)
+    np.save(DATA_PATH + 'loss_per_epoch', loss_per_epoch)
+
 
 
 if __name__ == '__main__':
