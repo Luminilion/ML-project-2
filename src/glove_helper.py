@@ -2,19 +2,21 @@
 
 DATA_PATH = "../data/"
 
-def split(file):
+def split(file, numbersplit):
     M = np.load(DATA_PATH + file)
     n,p = M.shape
-    A, B = np.array_split()
 
-    np.save(DATA_PATH + 'embeddings_full_10epoch_{}dim_firsthalf'.format(p), A)
-    np.save(DATA_PATH + 'embeddings_full_10epoch_{}dim_secondhalf'.format(p), B)
+    L = np.array_split(M,numbersplit)
+    
+    for i, submatrix in enumerate(L):
+        np.save(DATA_PATH + 'embeddings_full_10epoch_{}dim_part{}'.format(p,i+1), submatrix)
 
     return A,B
 
 
-def concatenate(file1, file2):
-    A = np.load(DATA_PATH + file1)
-    B = np.load(DATA_PATH + file2)
+def concatenate(list_of_files):
+    L=[]
+    for file in list_of_files:
+        L.append(np.load(DATA_PATH + file))
 
-    return np.concatenate((A,B), axis = 0)
+    return np.concatenate(L, axis = 0)
