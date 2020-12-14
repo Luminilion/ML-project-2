@@ -11,8 +11,6 @@ def split(file, numbersplit):
     for i, submatrix in enumerate(L):
         np.save(DATA_PATH + 'embeddings_full_10epoch_{}dim_part{}'.format(p,i+1), submatrix)
 
-    return A,B
-
 
 def concatenate(list_of_files):
     L=[]
