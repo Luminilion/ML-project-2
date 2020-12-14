@@ -1,5 +1,7 @@
 """Used to split and concatenate two matrices of embeddings (separated for storage issues)"""
 
+import numpy as np
+
 DATA_PATH = "../data/"
 
 def split(file, numbersplit):
@@ -18,3 +20,7 @@ def concatenate(list_of_files):
         L.append(np.load(DATA_PATH + file))
 
     return np.concatenate(L, axis = 0)
+
+
+if __name__ == "__main__":
+    split("embeddings_full_10epoch_250dim.npy",3)
