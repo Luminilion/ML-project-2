@@ -2,7 +2,7 @@
 
 import numpy as np
 
-DATA_PATH = "../data/"
+DATA_PATH = "../precomputed_data/"
 
 def split(file, numbersplit):
     M = np.load(DATA_PATH + file)
@@ -14,10 +14,10 @@ def split(file, numbersplit):
         np.save(DATA_PATH + 'embeddings_full_10epoch_{}dim_part{}'.format(p,i+1), submatrix)
 
 
-def concatenate(list_of_files):
+def concatenate(list_of_files, data_path):
     L=[]
     for file in list_of_files:
-        L.append(np.load(DATA_PATH + file))
+        L.append(np.load(data_path + file, allow_pickle=True))
 
     return np.concatenate(L, axis = 0)
 
