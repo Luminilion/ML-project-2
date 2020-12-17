@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-DATA_PATH = "../data/"
+PRECOMPUTED_PATH = "../precomputed_data/"
 
-loss = np.load(DATA_PATH + "loss_per_epoch.npy")
+loss = np.load(PRECOMPUTED_PATH + "loss_22epoch_250dim.npy")
 
 epoch = [i for i in range(len(loss))]
 

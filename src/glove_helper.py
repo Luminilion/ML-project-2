@@ -11,7 +11,7 @@ def split(file, numbersplit):
     L = np.array_split(M,numbersplit)
     
     for i, submatrix in enumerate(L):
-        np.save(DATA_PATH + 'embeddings_full_10epoch_{}dim_part{}'.format(p,i+1), submatrix)
+        np.save(DATA_PATH + 'embeddings_full_22epoch_{}dim_part{}'.format(p,i+1), submatrix)
 
 
 def concatenate(list_of_files, data_path):
@@ -23,4 +23,4 @@ def concatenate(list_of_files, data_path):
 
 
 if __name__ == "__main__":
-    split("embeddings_full_10epoch_250dim.npy",3)
+    split("embeddings_full_22epoch_250dim.npy",3)
