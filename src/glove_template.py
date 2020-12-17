@@ -21,6 +21,7 @@ import pickle
 import random
 
 DATA_PATH = "../data/"
+PRECOMPUTED_PATH = "../precomputed_data/"
 
 def main():
     print("loading cooccurrence matrix")
@@ -65,8 +66,8 @@ def main():
         
         loss_per_epoch.append(L)
 
-    np.save(DATA_PATH + 'embeddings_full_22epoch_{}dim'.format(embedding_dim), xs)
-    np.save(DATA_PATH + 'loss_22epoch_{}dim'.format(embedding_dim), loss_per_epoch)
+    np.save(PRECOMPUTED_PATH + 'embeddings_full_22epoch_{}dim'.format(embedding_dim), xs)
+    np.save(PRECOMPUTED_PATH + 'loss_22epoch_{}dim'.format(embedding_dim), loss_per_epoch)
 
 
 
